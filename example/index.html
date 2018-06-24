@@ -5,27 +5,73 @@
     <title>QueryBar</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../querybar.css">
+
     <style>
         #example {
             width: 500px;
         }
+        .query-value {
+            padding-left: 0em;
+            margin-left: -8px;
+            border-radius: 0 0 0 0;
+            /*-moz-border-radius-topleft: 0;*/
+        }
     </style>
 </head>
 <body>
-<h1>Query Bar Example</h1>
 <div class="container">
-    <div class="row justify-content-md-center" style="height: 300px"></div>
+    <h1>Query Bar Example</h1>
+
+    <span class="badge badge-secondary query-key">Author:</span>
+    <span class="badge badge-secondary query-value">@rudedog9d</span>
+
+
+    <div class="inner-addon left-addon">
+        <i class="badge badge-secondary query-key">Author:</i>
+        <i class="badge badge-secondary query-value">@rudedog9d</i>
+        <input type="text" class="form-control" placeholder="Username" />
+    </div>
+
+    <div class="inner-addon left-addon">
+        <i class="fa fa-user"></i>
+        <input type="text" class="form-control" placeholder="Username" />
+    </div>
+
+    <div class="inner-addon right-addon">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Search" />
+    </div>
+
+    <br>
+    <br>
+
     <div class="row">
-        <div class="col col-lg-2">
-
+        <div class="form-group col-xs-6">
+            <label class="control-label">
+                <code>.inner-addon.<i>left</i>-addon</code>
+            </label>
+            <div class="inner-addon left-addon">
+                <i class="fa fa-user"></i>
+                <input type="text" class="form-control" placeholder="Username" />
+            </div>
         </div>
-        <div class="col-md-auto">
-            <input id="example">
-        </div>
-        <div class="col col-lg-2">
 
+        <div class="form-group col-xs-6">
+            <label class="control-label">
+                <code>.inner-addon.<i>right</i>-addon</code>
+            </label>
+            <div class="inner-addon right-addon">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control" placeholder="Search" />
+            </div>
         </div>
     </div>
+
+</div>
+
 </div>
 </body>
 
