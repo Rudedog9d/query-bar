@@ -1,89 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>QueryBar</title>
+  <meta charset="UTF-8">
+  <title>QueryBar</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../querybar.css">
+  <link rel="stylesheet" href="../querybar.css">
 
-    <style>
-        #example {
-            width: 500px;
-        }
-        .query-value {
-            padding-left: 0em;
-            margin-left: -8px;
-            border-radius: 0 0 0 0;
-            /*-moz-border-radius-topleft: 0;*/
-        }
-    </style>
+  <style>
+    #example {
+      width: 500px;
+    }
+
+    .query-key {
+      /*float: left*/
+    }
+
+    .query-value {
+      padding-left: 0em;
+      margin-left: -8px;
+      border-radius: 0 0 0 0;
+      /*float: left;*/
+      /*-moz-border-radius-topleft: 0;*/
+    }
+
+    .query-container .badge {
+      /*flex-grow: 0;*/
+      /*flex-shrink: 0;*/
+      display: table;
+    }
+
+    .query-container {
+      width: 100%;
+      border: black;
+      border-style: solid;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .query-container:focus-within {
+      border-color: #73afea;
+      box-shadow: 0 0 4px rgba(115, 175, 234, 0.4);
+    }
+
+    .query-bar-input {
+      border-style: none;
+      outline: none;
+      width: 100%;
+    }
+
+    .query-bar-input-container {
+      /*display: block;*/
+      /*overflow-x: scroll;*/
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    /*.query-bar-input:focus{*/
+    /*outline: none;*/
+    /*}*/
+  </style>
 </head>
 <body>
 <div class="container">
-    <h1>Query Bar Example</h1>
+  <h1>Query Bar Example</h1>
 
+  <span class="badge badge-secondary query-key">Author:</span>
+  <span class="badge badge-secondary query-value">@rudedog9d</span>
+
+
+  <div class="inner-addon left-addon">
+    <i class="badge badge-secondary query-key">Author:</i>
+    <i class="badge badge-secondary query-value">@rudedog9d</i>
+    <input type="text" class="form-control" placeholder="Username"/>
+  </div>
+
+  <div class="query-container">
     <span class="badge badge-secondary query-key">Author:</span>
     <span class="badge badge-secondary query-value">@rudedog9d</span>
+    <span class="query-bar-input-container">
+          <input type="text" class="query-bar-input">
+        </span>
+  </div>
 
+  <div class="inner-addon left-addon">
+    <i class="fa fa-user"></i>
+    <input type="text" class="form-control" placeholder="Username"/>
+  </div>
 
-    <div class="inner-addon left-addon">
-        <i class="badge badge-secondary query-key">Author:</i>
-        <i class="badge badge-secondary query-value">@rudedog9d</i>
-        <input type="text" class="form-control" placeholder="Username" />
-    </div>
+  <div class="inner-addon right-addon">
+    <i class="fa fa-search"></i>
+    <input type="text" class="form-control" placeholder="Search"/>
+  </div>
 
-    <div class="inner-addon left-addon">
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="form-group col-xs-6">
+      <label class="control-label">
+        <code>.inner-addon.<i>left</i>-addon</code>
+      </label>
+      <div class="inner-addon left-addon">
         <i class="fa fa-user"></i>
-        <input type="text" class="form-control" placeholder="Username" />
+        <input type="text" class="form-control" placeholder="Username"/>
+      </div>
     </div>
 
-    <div class="inner-addon right-addon">
+    <div class="form-group col-xs-6">
+      <label class="control-label">
+        <code>.inner-addon.<i>right</i>-addon</code>
+      </label>
+      <div class="inner-addon right-addon">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search" />
+        <input type="text" class="form-control" placeholder="Search"/>
+      </div>
     </div>
-
-    <br>
-    <br>
-
-    <div class="row">
-        <div class="form-group col-xs-6">
-            <label class="control-label">
-                <code>.inner-addon.<i>left</i>-addon</code>
-            </label>
-            <div class="inner-addon left-addon">
-                <i class="fa fa-user"></i>
-                <input type="text" class="form-control" placeholder="Username" />
-            </div>
-        </div>
-
-        <div class="form-group col-xs-6">
-            <label class="control-label">
-                <code>.inner-addon.<i>right</i>-addon</code>
-            </label>
-            <div class="inner-addon right-addon">
-                <i class="fa fa-search"></i>
-                <input type="text" class="form-control" placeholder="Search" />
-            </div>
-        </div>
-    </div>
+  </div>
 
 </div>
 
 </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script src="../querybar.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('#example').QueryBar()
-    })
+  $(document).ready(function () {
+    $('#example').QueryBar()
+  })
 </script>
 
 </html>
