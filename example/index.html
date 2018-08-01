@@ -12,10 +12,6 @@
   <link rel="stylesheet" href="../querybar.css">
 
   <style>
-    #example {
-      width: 500px;
-    }
-
     .query-key {
       /*float: left*/
     }
@@ -34,10 +30,18 @@
       display: table;
     }
 
+    .token {
+      float: left;
+      margin-top: .25em;
+      margin-bottom: .25em;
+      /*margin-bottom: 10%;*/
+    }
+
     .query-container {
       width: 100%;
       border: black;
       border-style: solid;
+      border-width: thin;
       margin: 1rem 0;
       display: flex;
       flex-direction: row;
@@ -60,6 +64,7 @@
       /*overflow-x: scroll;*/
       padding-left: 10px;
       width: 100%;
+      float: right;
     }
 
     /*.query-bar-input:focus{*/
@@ -71,62 +76,25 @@
 <div class="container">
   <h1>Query Bar Example</h1>
 
-  <span class="badge badge-secondary query-key">Author:</span>
-  <span class="badge badge-secondary query-value">@rudedog9d</span>
-
-
-  <div class="inner-addon left-addon">
-    <i class="badge badge-secondary query-key">Author:</i>
-    <i class="badge badge-secondary query-value">@rudedog9d</i>
-    <input type="text" class="form-control" placeholder="Username"/>
-  </div>
+  <!-- Spacing 'cause I like it in the middle for testing /shrug -->
+  <br><br><br><br>
 
   <div class="query-container">
-    <span class="badge badge-secondary query-key">Author:</span>
-    <span class="badge badge-secondary query-value">@rudedog9d</span>
+    <!--<ul>-->
+    <span class="token">
+        <span class="badge badge-secondary query-key">Author:</span>
+    </span>
+    <span class="token">
+      <span class="badge badge-secondary query-value">@rudedog9d</span>
+    </span>
     <span class="query-bar-input-container">
-          <input type="text" class="query-bar-input">
-        </span>
-  </div>
-
-  <div class="inner-addon left-addon">
-    <i class="fa fa-user"></i>
-    <input type="text" class="form-control" placeholder="Username"/>
-  </div>
-
-  <div class="inner-addon right-addon">
-    <i class="fa fa-search"></i>
-    <input type="text" class="form-control" placeholder="Search"/>
-  </div>
-
-  <br>
-  <br>
-
-  <div class="row">
-    <div class="form-group col-xs-6">
-      <label class="control-label">
-        <code>.inner-addon.<i>left</i>-addon</code>
-      </label>
-      <div class="inner-addon left-addon">
-        <i class="fa fa-user"></i>
-        <input type="text" class="form-control" placeholder="Username"/>
-      </div>
-    </div>
-
-    <div class="form-group col-xs-6">
-      <label class="control-label">
-        <code>.inner-addon.<i>right</i>-addon</code>
-      </label>
-      <div class="inner-addon right-addon">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search"/>
-      </div>
-    </div>
+        <input type="text" class="query-bar-input">
+      </span>
+    <!--</ul>-->
   </div>
 
 </div>
 
-</div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
