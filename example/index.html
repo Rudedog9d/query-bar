@@ -10,80 +10,6 @@
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../querybar.css">
-
-  <style>
-    ._qb-key {
-      /*float: left*/
-      border-radius: 0 0 0 0;
-      background-color: #f8f8f8;
-    }
-
-    ._qb-value {
-      /*padding-left: 0;*/
-      /*margin-left: -8px;*/
-      border-radius: 0 0 0 0;
-
-      background-color: #f0f0f0;
-    }
-
-    /* Spacing between Key and Value */
-    ._qb-key + ._qb-value {
-      margin-left: .25em;
-    }
-
-    /* Spacing between sets of Key/Value pairs */
-    ._qb-value + ._qb-key {
-      margin-left: .5em;
-    }
-
-    ._qb-token {
-      /*float: left;*/
-      margin-top: .25em;
-      margin-bottom: .25em;
-      /*display: inline-block;*/
-      padding: .25em .4em;
-      font-size: 75%;
-      font-weight: 700;
-      line-height: 1;
-      /*text-align: center;*/
-      white-space: nowrap;
-      /*vertical-align: baseline;*/
-      /*border-radius: .25rem;*/
-    }
-
-    ._qb-container {
-      width: 100%;
-      border: black;
-      border-style: solid;
-      border-width: thin;
-      margin: 1rem 0;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    ._qb-container:focus-within {
-      border-color: #73afea;
-      box-shadow: 0 0 4px rgba(115, 175, 234, 0.4);
-    }
-
-    ._qb-input {
-      border-style: none;
-      outline: none;
-      height: 100%;
-      width: 100%;
-      min-width: 300px;
-    }
-
-    ._qb-input-container {
-      padding-left: 10px;
-      width: 100%;
-      float: right;
-    }
-  </style>
 </head>
 <body>
 <div class="container">
@@ -95,12 +21,8 @@
   <div class="_qb-container">
     <!--<ul>-->
     <div id="token-container" style="display: inherit;">
-      <span class="_qb-token _qb-key">
-        Author:
-      </span>
-      <span class="_qb-token _qb-value">
-        @rudedog9d
-      </span>
+      <span class="_qb-token _qb-key">Author:</span>
+      <span class="_qb-token _qb-value">@rudedog9d</span>
     </div>
     <span class="_qb-input-container">
         <input onkeydown="inputHandler(this)" type="text" class="_qb-input">
@@ -124,46 +46,6 @@
 <script src="../querybar.js"></script>
 
 <script>
-  function generateTokenKey(val) {
-    return "<span class=\"_qb-token _qb-key\">" + val + "</span>";
-  }
-
-  function generateTokenValue(val) {
-    return "<span class=\"_qb-token _qb-value\">" + val + "</span>";
-  }
-
-  function inputHandler(ele) {
-    $qContainer = $('._qb-container');
-    // console.log([ele])
-
-    // If key wasn't ENTER, return
-    if (event.keyCode !== 13)
-      return;
-
-    // If key was enter, parse value
-    let val = ele.value;
-
-    if (!val)
-      return;
-
-    let parts = val.split(':');
-
-    if (parts.length < 2) {
-      alert('must provide value in form "key:value"');
-      return;
-    }
-
-    // Add Key:Value pair to query bar
-    $('#token-container').append(generateTokenKey(parts[0]));
-    $('#token-container').append(generateTokenValue(parts[1]))
-
-    // Reset value
-    ele.value = "";
-
-    // Scroll all the way to the end of the query bar after appending badges
-    $qContainer.scrollLeft($qContainer.width())
-  }
-
   $(document).ready(function () {
     $('#example').QueryBar()
   })

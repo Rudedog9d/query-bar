@@ -1,19 +1,63 @@
-/* enable absolute positioning */
-.inner-addon {
-    position: relative;
+._qb-key {
+    border-radius: 0 0 0 0;
+    background-color: #f8f8f8;
 }
 
-/* style icon */
-.inner-addon .fa {
-    position: absolute;
-    padding: 10px;
-    pointer-events: none;
+._qb-value {
+    border-radius: 0 0 0 0;
+
+    background-color: #f0f0f0;
 }
 
-/* align icon */
-.left-addon .fa  { left:  0px;}
-.right-addon .fa { right: 0px;}
+/* Spacing between Key and Value */
+._qb-key + ._qb-value {
+    margin-left: .25em;
+}
 
-/* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+/* Spacing between sets of Key/Value pairs */
+._qb-value + ._qb-key {
+    margin-left: .5em;
+}
+
+._qb-token {
+    margin-top: .25em;
+    margin-bottom: .25em;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+._qb-container {
+    width: 100%;
+    border: black;
+    border-style: solid;
+    border-width: thin;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+._qb-container:focus-within {
+    border-color: #73afea;
+    box-shadow: 0 0 4px rgba(115, 175, 234, 0.4);
+}
+
+._qb-input {
+    border-style: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    min-width: 300px;
+}
+
+._qb-input-container {
+    padding-left: 10px;
+    width: 100%;
+    float: right;
+}
