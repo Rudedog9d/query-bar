@@ -14,14 +14,25 @@
   <style>
     .query-key {
       /*float: left*/
+      border-radius: 0 0 0 0;
     }
 
     .query-value {
       padding-left: 0em;
-      margin-left: -8px;
+      /*margin-left: -8px;*/
       border-radius: 0 0 0 0;
       /*float: left;*/
       /*-moz-border-radius-topleft: 0;*/
+    }
+
+    /* Spacing between Key and Value */
+    .query-key + .query-value {
+      margin-left: .25em;
+    }
+
+    /* Spacing between sets of Key/Value pairs */
+    .query-value + .query-key {
+      margin-left: .5em;
     }
 
     .query-container .badge {
@@ -81,14 +92,16 @@
 
   <div class="query-container">
     <!--<ul>-->
-    <span class="token">
-        <span class="badge badge-secondary query-key">Author:</span>
-    </span>
-    <span class="token">
-      <span class="badge badge-secondary query-value">@rudedog9d</span>
-    </span>
+    <div id="token-container" style="display: inherit;">
+      <span class="token query-key">
+        <span class="badge badge-secondary">Author:</span>
+      </span>
+      <span class="token query-value">
+        <span class="badge badge-secondary">@rudedog9d</span>
+      </span>
+    </div>
     <span class="query-bar-input-container">
-        <input type="text" class="query-bar-input">
+        <input onkeydown="inputHandler(this)" type="text" class="query-bar-input">
       </span>
     <!--</ul>-->
   </div>
@@ -109,6 +122,50 @@
 <script src="../querybar.js"></script>
 
 <script>
+  function generateTokenKey(val) {
+    return "      <span class=\"token query-key\">\n" +
+        "        <span class=\"badge badge-secondary\">" +
+        val +
+        ":</span>\n" +
+        "      </span>"
+  }
+
+  function generateTokenValue(val) {
+    return "      <span class=\"token query-value\">\n" +
+        "        <span class=\"badge badge-secondary\">" +
+        val +
+        "</span>\n" +
+        "      </span>"
+  }
+
+  function inputHandler(ele) {
+    // console.log([ele])
+
+    // If key wasn't ENTER, return
+    if (event.keyCode !== 13)
+      return;
+
+    // If key was enter, parse value
+    let val = ele.value;
+
+    if (!val)
+      return;
+
+    let parts = val.split(':');
+
+    if (parts.length < 2) {
+      alert('must provide value in form "key:value"');
+      return;
+    }
+
+    // Add Key:Value pair to query bar
+    $('#token-container').append(generateTokenKey(parts[0]));
+    $('#token-container').append(generateTokenValue(parts[1]))
+
+    // Reset value
+    ele.value = "";
+  }
+
   $(document).ready(function () {
     $('#example').QueryBar()
   })
