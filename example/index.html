@@ -4,51 +4,54 @@
   <meta charset="UTF-8">
   <title>QueryBar</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
+        <!--integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../querybar.css">
 
   <style>
-    .query-key {
+    ._qb-key {
       /*float: left*/
       border-radius: 0 0 0 0;
+      background-color: #f8f8f8;
     }
 
-    .query-value {
-      padding-left: 0em;
+    ._qb-value {
+      /*padding-left: 0;*/
       /*margin-left: -8px;*/
       border-radius: 0 0 0 0;
-      /*float: left;*/
-      /*-moz-border-radius-topleft: 0;*/
+
+      background-color: #f0f0f0;
     }
 
     /* Spacing between Key and Value */
-    .query-key + .query-value {
+    ._qb-key + ._qb-value {
       margin-left: .25em;
     }
 
     /* Spacing between sets of Key/Value pairs */
-    .query-value + .query-key {
+    ._qb-value + ._qb-key {
       margin-left: .5em;
     }
 
-    .query-container .badge {
-      /*flex-grow: 0;*/
-      /*flex-shrink: 0;*/
-      display: table;
-    }
-
-    .token {
-      float: left;
+    ._qb-token {
+      /*float: left;*/
       margin-top: .25em;
       margin-bottom: .25em;
-      /*margin-bottom: 10%;*/
+      /*display: inline-block;*/
+      padding: .25em .4em;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      /*text-align: center;*/
+      white-space: nowrap;
+      /*vertical-align: baseline;*/
+      /*border-radius: .25rem;*/
     }
 
-    .query-container {
+    ._qb-container {
       width: 100%;
       border: black;
       border-style: solid;
@@ -57,32 +60,29 @@
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
+
       overflow-x: auto;
+      overflow-y: hidden;
     }
 
-    .query-container:focus-within {
+    ._qb-container:focus-within {
       border-color: #73afea;
       box-shadow: 0 0 4px rgba(115, 175, 234, 0.4);
     }
 
-    .query-bar-input {
+    ._qb-input {
       border-style: none;
       outline: none;
+      height: 100%;
       width: 100%;
       min-width: 300px;
     }
 
-    .query-bar-input-container {
-      /*display: block;*/
-      /*overflow-x: scroll;*/
+    ._qb-input-container {
       padding-left: 10px;
       width: 100%;
       float: right;
     }
-
-    /*.query-bar-input:focus{*/
-    /*outline: none;*/
-    /*}*/
   </style>
 </head>
 <body>
@@ -92,18 +92,18 @@
   <!-- Spacing 'cause I like it in the middle for testing /shrug -->
   <br><br><br><br>
 
-  <div class="query-container">
+  <div class="_qb-container">
     <!--<ul>-->
     <div id="token-container" style="display: inherit;">
-      <span class="token query-key">
-        <span class="badge badge-secondary">Author:</span>
+      <span class="_qb-token _qb-key">
+        Author:
       </span>
-      <span class="token query-value">
-        <span class="badge badge-secondary">@rudedog9d</span>
+      <span class="_qb-token _qb-value">
+        @rudedog9d
       </span>
     </div>
-    <span class="query-bar-input-container">
-        <input onkeydown="inputHandler(this)" type="text" class="query-bar-input">
+    <span class="_qb-input-container">
+        <input onkeydown="inputHandler(this)" type="text" class="_qb-input">
       </span>
     <!--</ul>-->
   </div>
@@ -115,33 +115,25 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
+        <!--integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
+        <!--crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
+        <!--integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
+        <!--crossorigin="anonymous"></script>-->
 <script src="../querybar.js"></script>
 
 <script>
   function generateTokenKey(val) {
-    return "      <span class=\"token query-key\">\n" +
-        "        <span class=\"badge badge-secondary\">" +
-        val +
-        ":</span>\n" +
-        "      </span>"
+    return "<span class=\"_qb-token _qb-key\">" + val + "</span>";
   }
 
   function generateTokenValue(val) {
-    return "      <span class=\"token query-value\">\n" +
-        "        <span class=\"badge badge-secondary\">" +
-        val +
-        "</span>\n" +
-        "      </span>"
+    return "<span class=\"_qb-token _qb-value\">" + val + "</span>";
   }
 
   function inputHandler(ele) {
-    $qContainer = $('.query-container');
+    $qContainer = $('._qb-container');
     // console.log([ele])
 
     // If key wasn't ENTER, return
