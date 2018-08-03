@@ -13,5 +13,8 @@
     "searchbar"
   ],
   "author": "Brodie Davis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }
