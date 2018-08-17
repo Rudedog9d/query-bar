@@ -1,3 +1,7 @@
+._qb-token-container {
+    display: inherit;
+}
+
 ._qb-key {
     border-radius: 0 0 0 0;
     background-color: #f8f8f8;
