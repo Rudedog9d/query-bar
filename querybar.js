@@ -11,17 +11,27 @@
   $.fn.QueryBar = function (options) {
     console.log('init query bar', this);
 
+    let ret = []; // return object
+
     /*
      * We can always call .each() on a jquery object, even when only one exists
      * Return this so that we can maintain chain-ability
      */
-    return this.each(function () {
+    // return this.each(function () {
+    for(let ele of this) {
       // Do something to each element here.
-      let ele = this;
+      // todo check if element has already been estantiated, and just return existing object
+      // let ele = this;
       let $ele = $(ele);
 
       // Self represents QueryBar object here
       let self = {};
+      // Self.public is the Public API to expose (on returned object from
+      self.public = {
+        params: {},  // Search parameters by Key:Value
+        _self: self  // Expose self for advance users and debugging
+      };
+
       self.inputHandler = function () {
         // Remove last token with backspace
         // todo handle when a value is removed but a key isn't, then a value is readded
@@ -56,6 +66,7 @@
         // Add Key:Value pair to query bar
         self.$tokenContainer.append(generateTokenKey(parts[0]));
         self.$tokenContainer.append(generateTokenValue(parts[1]));
+        self.public.params[parts[0]] = parts[1];
 
         // Reset value
         ele.value = "";
@@ -63,7 +74,7 @@
         // Scroll all the way to the end of the query bar after appending badges
         // self.$container.scrollLeft(self.$container.width()) todo fix this once we can track the container again
       };
-      self.init = function() {
+      self.init = function () {
         /*
          * Wrap Text Box in proper wrappers - this is the goal:
         <div class="_qb-container">
@@ -92,8 +103,13 @@
 
       self.init();
 
-      return self;
-    });
+      ret.push(self.public);
+    }
+    // });
+
+    // Return list of all instantiated objects if we received a list of JQuery objects,
+    // Otherwise return the single object.
+    return ret.length > 1 ? ret : ret[0];
   };
 
 }(jQuery));
