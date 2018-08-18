@@ -60,8 +60,11 @@
     min-width: 300px;
 }
 
+._qb-token:last-child {
+    margin-right: .25rem;
+}
+
 ._qb-input-container {
-    padding-left: 10px;
     width: 100%;
     float: right;
 }
