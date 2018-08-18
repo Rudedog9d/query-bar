@@ -67,4 +67,6 @@
 ._qb-input-container {
     width: 100%;
     float: right;
+    margin-top: .25em;
+    margin-bottom: .25em;
 }
