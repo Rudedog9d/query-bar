@@ -8,22 +8,28 @@
     return "<span class=\"_qb-token _qb-value\">" + val + "</span>";
   }
 
+  /*
+   * Set up JQuery plugin by adding to $.fn
+   */
   $.fn.QueryBar = function (options) {
     console.log('init query bar', this);
 
     let ret = []; // return object
 
     /*
-     * We can always call .each() on a jquery object, even when only one exists
-     * Return this so that we can maintain chain-ability
+     * We can always loop through a jquery object, even when only one exists
+     * Append new QueryBar objects to a list and return the list as the result
      */
-    // return this.each(function () {
     for(let ele of this) {
       // Do something to each element here.
       // todo check if element has already been estantiated, and just return existing object
+         // This can be done by storing the QueryBar object (self below)
+         // on the element itself with $ele.data('QueryBar');
+      // todo options to update query bar with params (searchParam = "keyName" || false)
       // let ele = this;
       let $ele = $(ele);
 
+      // Store QueryBar data on element, so we know if we already instantiated this object
       // Self represents QueryBar object here
       let self = {};
       // Self.public is the Public API to expose (on returned object from
@@ -84,7 +90,10 @@
           </span>
         </div>
          */
+
+        // Add CSS class to element
         $ele.addClass('_qb-input');
+
         // todo get inputContainer and tokenContainer
         // self.$inputContainer = $ele.wrap('<div class="_qb-input-container"></div>');
         // self.$container = self.$inputContainer.wrap('<div class="_qb-container"></div>');
@@ -100,6 +109,7 @@
         // Add key handler to element
         $ele.on('keydown', self.inputHandler)
       };
+
 
       self.init();
 
