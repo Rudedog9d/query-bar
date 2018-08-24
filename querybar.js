@@ -98,11 +98,11 @@
       $ele.wrap('<div class="_qb-input-container"></div>');
     };
 
-    function inputHandler() {
+    function inputHandler(e) {
       // Remove last token with backspace
       // todo handle when the input box has styling applied to it
       // todo handle when a value is removed but a key isn't, then a value is readded
-      if (event.key === "Backspace" && ele.value.length === 0) {
+      if (e.key === "Backspace" && ele.value.length === 0) {
         // Backspace was pressed with no value, remove the last two items
         let $lastToken = self.$tokenContainer.find('._qb-token').last();
         $ele.val($lastToken.text());
@@ -110,7 +110,7 @@
       }
 
       // If key wasn't ENTER, return
-      if (event.keyCode !== 13)
+      if (e.keyCode !== 13)
         return;
 
       // If key was enter, get value
