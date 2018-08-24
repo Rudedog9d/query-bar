@@ -100,6 +100,7 @@
 
     function inputHandler() {
       // Remove last token with backspace
+      // todo handle when the input box has styling applied to it
       // todo handle when a value is removed but a key isn't, then a value is readded
       if (event.key === "Backspace" && ele.value.length === 0) {
         // Backspace was pressed with no value, remove the last two items
